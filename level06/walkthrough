@@ -1,0 +1,40 @@
+level06@OverRide:~$ ./level06 
+***********************************
+*               level06           *
+***********************************
+-> Enter Login: aaaaaa
+***********************************
+***** NEW ACCOUNT DETECTED ********
+***********************************
+-> Enter Serial: 6231562 
+Authenticated!
+$ pwd
+/home/users/level06
+$ cd /home/users/level07
+$ ls -a
+.  ..  .bash_logout  .bash_profile  .bashrc  level07  .pass  .profile
+$ cat .pass
+GbcPDRgsFK77LNnnuh7QyFYA2942Gp8yKj9KrWD8
+$ 
+
+
+python 
+
+def generate_serial(login):
+    if len(login) < 6:
+        return None
+    
+    # Initial value based on 4th character
+    serial = (ord(login[3]) ^ 0x1337) + 0x5eeded
+    
+    # Update serial for each character
+    for c in login:
+        serial = serial + (ord(c) ^ serial) % 0x539
+        
+    return serial
+
+# Test avec un login simple de 6 caractères
+login = "aaaaaa"
+serial = generate_serial(login)
+print(f"Login: {login}")
+print(f"Serial: {serial}")

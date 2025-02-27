@@ -1,0 +1,24 @@
+Voici l'explication étape par étape :
+
+Le programme utilise plusieurs fonctions cachées découvertes avec info functions dans Ghidra.
+La fonction decrypt fait une opération XOR avec une clé. Sachant que le message chiffré "Q}|u`sfg~sf{}|a3" doit donner "Congratulations!" après XOR :
+
+Premier caractère : 'Q' XOR clé = 'C'
+Donc clé = 'Q' XOR 'C' = 18
+
+
+Pour obtenir cette clé (18), il faut que :
+0x1337d00d - notre_entrée = 18
+Donc notre_entrée = 0x1337d00d - 18 = 322424827
+En entrant 322424827, le programme utilise 18 comme clé de XOR, déchiffre correctement le message et nous donne accès au flag.
+
+C'est pourquoi la commande finale :
+(echo "322424827"; cat;) | ./level03
+
+
+level03@OverRide:~$ (echo "322424827"; cat;) | ./level03
+***********************************
+*               level03         **
+***********************************
+cat /home/users/level04/.pass
+kgv3tkEb9h2mLkRsPkXRfc2mHbjMxQzvb2FrgKkf
